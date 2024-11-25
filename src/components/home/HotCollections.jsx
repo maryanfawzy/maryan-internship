@@ -6,7 +6,8 @@ import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
 import { isLabelWithInternallyDisabledControl } from "@testing-library/user-event/dist/utils";
 import Slider from "react-slick";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const HotCollections = () => {
   const [hotCollections, setHotCollections] = useState([]);
@@ -37,9 +38,6 @@ const HotCollections = () => {
   };
 
   return (
-   
-
-
 
 <section id="section-collections" className="no-bottom">
 <div className="container">
@@ -50,40 +48,32 @@ const HotCollections = () => {
         <div className="small-border bg-color-2"></div>
       </div>
     </div>
-    <Slider {...settings}>
-    {              hotCollections.map((collections, index) => (
-                <div className="p-2" key={index}>
-                  <div className="nft_coll">
-                    <div className="nft_wrap">
-                      <Link to={`/item-details/${collections.nftId}`}>
-                        <img
-                          src={collections.nftImage}
-                          className="lazy img-fluid"
-                          alt=""
-                        />
-                      </Link>
-                    </div>
-                    <div className="nft_coll_pp">
-                      <Link to={`/author/${collections.authorId}`}>
-                        <img
-                          className="lazy pp-coll"
-                          src={collections.authorImage}
-                          alt=""
-                        />
-                      </Link>
-                      <i className="fa fa-check"></i>
-                    </div>
-                    <div className="nft_coll_info">
-                      <Link to="/explore">
-                        <h4>{collections.title}</h4>
-                      </Link>
-                      <span>ERC-{collections.code}</span>
-                    </div>
-                  </div>
+ 
+ 
+    {hotCollections.map((collection, index) => (
+            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
+              <div className="nft_coll">
+                <div className="nft_wrap">
+                  <Link to="/item-details">
+                    <img src={collection.nftImage} className="lazy img-fluid" alt="" />
+                  </Link>
                 </div>
-))}
-    </Slider>
-
+                <div className="nft_coll_pp">
+                  <Link to="/author">
+                    <img className="lazy pp-coll" src={collection.AuthorImage} alt="" />
+                  </Link>
+                  <i className="fa fa-check"></i>
+                </div>
+                <div className="nft_coll_info">
+                  <Link to="/explore">
+                    <h4>{collection.title}</h4>
+                  </Link>
+                  <span>ERC-{collection.code}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+ 
 
   </div>
 </div>
