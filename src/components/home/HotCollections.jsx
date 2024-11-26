@@ -24,31 +24,34 @@ const HotCollections = () => {
   useEffect(() => {
     fetchHotCollections();
   }, []);
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+  
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          }
         }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      }
-    ]
-  };
+      ]
+    };
+  
+  
 
+ 
   return (
     <section id="section-collections" className="no-bottom">
       <div className="container">
@@ -62,7 +65,29 @@ const HotCollections = () => {
 
           <div className="col-lg-12">
             <Slider {...settings}>
-              {hotCollections.map((collection, index) => (
+              {loading?
+              (
+                <div className="p-2">
+                <div className="nft_coll">
+                  <div className="nft_wrap">
+                    <Skeleton width={282} height={270} />
+                  </div>
+                  <div className="nft_coll_pp">
+                    <Skeleton width={50} height={50} borderRadius={99} />
+                    <i className="fa fa-check"></i>
+                  </div>
+                  <div className="nft_coll_info">
+                    <h4>
+                      <Skeleton height={20} width="40%" />
+                    </h4>
+                    <span>
+                      <Skeleton height={20} width="20%" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ):(
+              hotCollections.map((collection, index) => (
                 <div key={index}>
                   <div className="nft_coll">
                     <div className="nft_wrap">
@@ -72,7 +97,7 @@ const HotCollections = () => {
                     </div>
                     <div className="nft_coll_pp">
                       <Link to="/author">
-                        <img className="lazy pp-coll" src={collection.AuthorImage} alt="" />
+                        <img className="lazy pp-coll" src={collection.authorImage} alt="" />
                       </Link>
                       <i className="fa fa-check"></i>
                     </div>
@@ -84,13 +109,16 @@ const HotCollections = () => {
                     </div>
                   </div>
                 </div>
-              ))}
+              ))
+            )}
             </Slider>
           </div>
         </div>
       </div>
     </section>
-  );
+            )
+
+           
 };
 
 export default HotCollections
