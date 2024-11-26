@@ -14,3 +14,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.slick-arrow::before{
+    background-color: black;
+   size: 100px;
+   
+}
+.slick-slide{
+    margin: px;
+}
