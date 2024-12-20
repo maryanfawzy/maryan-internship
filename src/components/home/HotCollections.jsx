@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const HotCollections = () => {
   const [hotCollections, setHotCollections] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   async function fetchHotCollections() {
     setLoading(true);
