@@ -121,4 +121,4 @@ const HotCollections = () => {
            
 };
 
-export default HotCollections
+export default HotCollections ;

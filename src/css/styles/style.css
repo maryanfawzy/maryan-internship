@@ -16718,8 +16718,9 @@ img {
 
 
 @media (min-width: 900px) {
-#section-collections{
+#section-collections,
+.nft_wrap{
   padding: 20px;
-  position: relative;
+  
 }
   }
